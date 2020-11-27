@@ -95,13 +95,13 @@ public class MainClass {
         list8.add(new Person("Neil", "Age 71", 71, "M"));
         list8.add(new Person("Jujo", "Age 24", 24, "F"));
 
-        List<String> listPerson1 = streamOlderThan66(list8);
-        System.out.println(listPerson1);
+        List<String> listPerson = streamOlderThan66(list8);
+        System.out.println(listPerson);
         System.out.println("-----");
 
 //▪ Print out the sum of ages of all female authors younger than 25
-        List<Integer> listPerson2 = Collections.singletonList(streamYoungerThan25(list8));
-        System.out.println(listPerson2);
+        Integer sumOfAges = streamYoungerThan25(list8);
+        System.out.println(sumOfAges);
     }
 
 
@@ -168,11 +168,10 @@ public class MainClass {
     }
 
     public static Integer streamYoungerThan25(List<Person> list) {
-
-return list.stream()
-        .filter(p->p.getSex().equalsIgnoreCase("F"))
-        .filter(p->p.getAge() < 25)
-        .reduce(0, (sum, p) -> sum += p.getAge(), (sum1, sum2) -> sum1 + sum2);
+        return list.stream()
+                .filter(p->p.getSex().equalsIgnoreCase("F"))
+                .filter(p->p.getAge() < 25)
+                .reduce(0, (sum, p) -> sum += p.getAge(), (sum1, sum2) -> sum1 + sum2);
     }
 
 
