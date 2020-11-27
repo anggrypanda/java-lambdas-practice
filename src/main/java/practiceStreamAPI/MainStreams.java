@@ -1,9 +1,6 @@
 package practiceStreamAPI;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Arrays;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -45,5 +42,21 @@ public class MainStreams {
         List<Integer> evenNumbersList = streamOfList.filter(i -> i % 2 == 0)
                 .collect(Collectors.toList());
         System.out.println(evenNumbersList);
+        System.out.println("-----");
+
+        List<String> myList = Arrays.asList("d1", "d2", "d3", "a1", "a2", "a3", "a4", "b1", "b2", "c1", "c3", "c2");
+
+        myList.stream()
+                .filter(s -> s.contains("2"))
+                .map(String::toUpperCase)
+                .sorted()
+                .forEach(System.out::println);
+        System.out.println("-----");
+
+        String[] myArray = { "This", "is", "a", "sentence" };
+        String result = Arrays.stream(myArray)
+                .reduce("", (a,b) -> a + "-" + b + ".");
+        System.out.println(result);
+        System.out.println("-----");
     }
 }
